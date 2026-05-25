@@ -16,7 +16,8 @@ export default async function handler(req, res) {
     // req.url jodi '/v1/commonsetting/...' hoy, tobe 
     // targetUrl e 'https://irasv1.iub.edu.bd:8079//v1/commonsetting/...' hobe.
     const endpoint = req.url.replace('/api/proxy', '');
-    const targetUrl = `https://irasv1.iub.edu.bd:8079/${endpoint}`;
+    // Hardcoded double slash for testing:
+    const targetUrl = `https://irasv1.iub.edu.bd:8079//${endpoint.replace(/^\//, '')}`;
 
     try {
         const response = await axios({
